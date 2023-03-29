@@ -27,15 +27,15 @@
                         you the best deals and the best rooms. Login above to 
                         begin booking.</p>
                     <div class="btn">
-                        <button class="booking">Book Now</button>
+                        <button onclick=" booking()">Book Now</button>
+                            <script>
+                                function booking(){
+                                    window.open("index.html");
+                                }
+                            </script>
                     </div>
                 </div>
             </div>
         </div>
-        <script>
-            document.getElementById("booking").onclick = function(){
-                location.href = "index.html";
-            };
-        </script>
     </body>
 </html>
