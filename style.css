@@ -174,10 +174,77 @@ ul li{
   }
   .dropdown-contentCapacity a:hover {background-color: #ddd;}
 
-.dropdownCapacity:hover .dropdown-contentCapacity {display: block;}
+  .dropdownCapacity:hover .dropdown-contentCapacity {display: block;}
+  
+  .dropdownCapacity:hover .dropbtnCapacity {background-color: #4d045f;}
 
-.dropdownCapacity:hover .dropbtnCapacity {background-color: #4d045f;}
+.dropbtnHotelRating {
+  background-color: #9525e0;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
 
+.dropdownHotelRating {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-contentHotelRating {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-contentHotelRating a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-contentHotelRating a:hover {background-color: #ddd;}
+
+.dropdownHotelRating:hover .dropdown-contentHotelRating {display: block;}
+
+.dropdownHotelRating:hover .dropbtnHotelRating {background-color: #4d045f;}
+
+.dropbtnHotelPrice {
+  background-color: #9525e0;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+.dropdownHotelPrice {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-contentHotelPrice{
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-contentHotelPrice a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+.dropdown-contentHotelPrice a:hover {background-color: #ddd;}
+
+.dropdownHotelPrice:hover .dropdown-contentHotelPrice {display: block;}
+
+.dropdownHotelPrice:hover .dropbtnHotelPrice {background-color: #4d045f;}
 .container {
    
     color: rgb(184, 19, 19);
