@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+OCTYPE html>
 <html>
     <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
                 <img src="Images/TranspLogo.png" class="logo">
                 <ul>
                     <li><a href="">About Us</a></li>
-                    <li><a href="">Employee Registration</a></li>
+                    <li><a href="#" onclick="document.getElementById('id03').style.display='block'">Employee Login</a></li>
                     <li><a href="#" onclick="document.getElementById('id01').style.display='block'">Sign Up</a></li>
                 </ul>
                 <button class="booking2">Book A Visit</button>
@@ -34,6 +34,7 @@
                                 }
                             </script>
                     </div>
+
                 </div>
             </div>
         </div>
@@ -75,6 +76,9 @@
                 }
             </script> 
         </div>
+
+        
+
         <div id="id02" class="modal">
             <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Login">X</span>
             <form class="modal-content" action="http://localhost/application/CSI2132-Course-Project-Deliverable/test.php" method ="post">
@@ -96,9 +100,45 @@
             </form>
           </div>
         <div>
+
             <script>
                 // Get the modal
                 var modal1 = document.getElementById('id02');
+                
+                // When the user clicks anywhere outside of the modal, close it
+                window.onclick = function(event) {
+                    if (event.target == modal1) {
+                        modal.style.display = "none";
+                    }
+                }
+            </script> 
+        </div>
+
+        <div id="id03" class="modal">
+            <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Login">X</span>
+            <form class="modal-content" action="http://localhost/application/CSI2132-Course-Project-Deliverable/test.php" method ="post">
+              <div class="containment3">
+                <h1>Login</h1>
+                <p>Please fill in this form with your account information</p>
+                <hr>
+                <label for="usernm"><b>Username</b></label>
+                <input type="text" placeholder="Enter a Username" name="usernm" required>
+          
+                <label for="pass"><b>Password</b></label>
+                <input type="password" placeholder="Enter Password" name="pass" required>
+          
+                <div class="clearfix">
+                  <button type="button" onclick="document.getElementById('id03').style.display='none'" class="cancelbtn1">Cancel</button>
+                  <button type="submit" onclick=""class="login">Sign in</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        <div>
+
+            <script>
+                // Get the modal
+                var modal1 = document.getElementById('id03');
                 
                 // When the user clicks anywhere outside of the modal, close it
                 window.onclick = function(event) {
