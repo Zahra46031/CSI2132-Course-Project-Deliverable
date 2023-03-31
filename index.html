@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <title>Website Design Using HTML And CSS</title>
+        <link rel="stylesheet" href="style.css"></link>
+    </head>
+    <body>
+      <div class="heading">
+        <img src="Images/TranspLogo.png" class="logo">
+        <h1>Welcome to the booking page!</h1>
+      </div>
+      <div class="main">
+          <nav>
+              <div class = "center">
+                  <ul>
+                      <div class="dropdownArea">
+                          <button class="dropbtnArea">Area</button>
+                          <div class="dropdown-contentArea">
+                            <a href="#"onclick="changeText3('New York')">New York</a>
+                            <a href="#"onclick="changeText3('Toronto')">Toronto</a>
+                            <a href="#"onclick="changeText3('Los Angeles')">Los Angeles</a>
+                            <a href="#"onclick="changeText3('Washington D.C')">Washington D.C</a>
+                            <a href="#"onclick="changeText3('Ottawa')">Ottawa</a>
+                            <a href="#"onclick="changeText3('Mexico City')">Mexico City</a>
+                          </div>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="dropdownHotelChain">
+                          <button class="dropbtnHotelChain">Hotel Chain</button>
+                          <div class="dropdown-contentHotelChain">
+                            <a href="#"onclick="changeText4('Hilton')">Hilton</a>
+                            <a href="#"onclick="changeText4('Holiday Inn')">Holiday Inn</a>
+                            <a href="#"onclick="changeText4('Marriott')">Marriott</a>
+                            <a href="#"onclick="changeText4('Best Western')">Best Western</a>
+                            <a href="#"onclick="changeText4('Wyndham')">Wyndham</a>
+                          </div>
+                        </div>
+                        &nbsp;&nbsp;
+                          <div class="dropdownCapacity">
+                          <button class="dropbtnCapacity">Room Capacity</button>
+                          <div class="dropdown-contentCapacity">
+                            <a href="#"onclick="changeText5('1 Occupant')">1 Occupant</a>
+                            <a href="#"onclick="changeText5('2 Occupants')">2 Occupants</a>
+                            <a href="#"onclick="changeText5('3 Occupants')">3 Occupants</a>
+                            <a href="#"onclick="changeText5('4 Occupants')">4 Occupants</a>
+                            <a href="#"onclick="changeText5('5 Occupants')">5 Occupants</a>
+                            <a href="#"onclick="changeText5('6 Occupants')">6 Occupants</a>
+                            <a href="#"onclick="changeText5('7 Occupants')">7 Occupants</a>
+                            <a href="#"onclick="changeText5('8 Occupants')">8 Occupants</a>
+                            <a href="#"onclick="changeText5('9 Occupants')">9 Occupants</a>
+                          </div>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="dropdownHotelRating">
+                          <button class="dropbtnHotelRating">Hotel Rating</button>
+                          <div class="dropdown-contentHotelRating">
+                            <a href="#"onclick="changeText6('1 Star')">1 Star</a>
+                            <a href="#"onclick="changeText6('2 Stars')">2 Stars</a>
+                            <a href="#"onclick="changeText6('3 Stars')">3 Stars</a>
+                            <a href="#"onclick="changeText6('4 Stars')">4 Stars</a>
+                            <a href="#"onclick="changeText6('5 Stars')">5 Stars</a>
+                          </div>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="dropdownHotelPrice">
+                          <button class="dropbtnHotelPrice">Hotel Price</button>
+                          <div class="dropdown-contentHotelPrice">
+                            <a href="#"onclick="changeText7('$50 - $200')">$50 - $200</a>
+                            <a href="#"onclick="changeText7('$200 - $500')">$200 - $500</a>
+                            <a href="#"onclick="changeText7('$500 - $1000')">$500 - $1000</a>
+                            
+                          </div>
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="dropdown">
+                          <!-- <button onclick="myFunction()" class="dropbtn">Start Date</button> -->
+                          <h4>Start Date</h4>
+                          <input type="datetime-local" id="Test_DatetimeLocal">
+
+                          <!-- <div id="mydropdown" class="dropdown-content">
+                            <a href="#"onclick="changeText('April 1st')">April 1st</a>
+                            <a href="#"onclick="changeText('April 15th')">April 15th</a>
+                            <a href="#"onclick="changeText('May 31st')">May 31st</a>
+                          </div> -->
+                        </div>
+                        &nbsp;&nbsp;
+                        <div class="dropdownend">
+                          <h4> End Date</h4>
+                          <input type="datetime-local" id="Test_DatetimeLocal">
+                          <!-- <button onclick="myFunctionEnd()" class="dropbtnend">End Date</button>
+                          <div id="mydropdownend" class="dropdown-contentend">
+                            <a href="#"onclick="changeText2('Link 1')">Link 1</a>
+                            <a href="#"onclick="changeText2('Link 2')">Link 2</a>
+                            <a href="#"onclick="changeText2('Link 3')">Link 3</a>
+                          </div> -->
+                        </div>
+                        
+                  </ul>
+              </div>
+              <div class="container">
+              <button class="submitButton" onclick="submitBtn()">Submit</button>
+          </div>
+          </nav>
+      </div>
+    </body>
+    <script src="utilities.js"></script>
+</html>
+<?php
+$dbhost = "localhost";
+$dbname = "mysql";
+$dbuser = "elias";
+$dbpass = "Databases2132"; 
+
+//connect to database
+$conn = new PDO("mysql:host=$dbhost;dbname=$dbname", $dbuser, $dsbpass);
+    // set the PDO error mode to exception
+$conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+//finds rooms given the input restrictions
+function queryRooms($min_capacity, $area, $hotel_chain, $min_stars, $num_rooms, $max_price) {
+  $query = "";
+  if (verifyInts($min_capacity) && verifyStrings($area) && verifyStrings($hotel_chain) && verifyInts($min_stars) && verifyInts($num_rooms) && verifyInts($max_price)) {
+    $query .= "SELECT Start_date, End_date, Room_Number, Damages, View, Capacity, Price, Amenities, Can_be_extended, Area, Stars, Hotel_name, Chain_name " .
+              "FROM Booking NATURAL JOIN Rooms NATURAL JOIN Hotels NATURAL JOIN Hotel_Chains WHERE ";
+    $isFirst = true;
+    if (verifyInts($min_capacity)) {
+      $query .= "Capacity >= " . $min_capacity;
+      $isFirst = false;
+    }
+    if (verifyStrings($area)) {
+      if ($isFirst) {
+        $query .= "Area = " . $area;
+        $isFirst = false;
+      } else {
+        $query .= " AND Area = " . $area;
+      }
+    }
+    if (verifyStrings($hotel_chain)) {
+      if ($isFirst) {
+        $query .= "Chain_name = " . $hotel_chain;
+        $isFirst = false;
+      } else {
+        $query .= " AND Chain_name = " . $hotel_chain;
+      }
+    }
+    if (verifyInts($min_stars)) {
+      if ($isFirst) {
+        $query .= "Stars >= " . $min_stars;
+        $isFirst = false;
+      } else {
+        $query .= " AND Stars >= " . $min_stars;
+      }
+    }
+    if (verifyInts($num_rooms)) {
+      if ($isFirst) {
+        $query .= "Number_of_rooms = " . $num_rooms;
+        $isFirst = false;
+      } else {
+        $query .= " AND Number_of_rooms = " . $num_rooms;
+      }
+    }
+    if (verifyInts($max_price)) {
+      if ($isFirst) {
+        $query .= "Price <= " . $max_price;
+        $isFirst = false;
+      } else {
+        $query .= " AND Price <= " . $max_price;
+      }
+    }
+  }
+  return $query;
+}
+
+//ensures the submitted value is >= 0
+function verifyInts($int) {
+  return $int >= 0;
+}
+
+//ensures the submitted string is not empty
+function verifyStrings($str) {
+  return $str != "";
+}
+?>
